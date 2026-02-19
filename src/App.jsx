@@ -386,7 +386,7 @@ export default function App() {
   const handleSubmit = async () => {
     setSubmitting(true);
     // TODO: Replace with your Make.com or backend webhook URL
-    const WEBHOOK_URL = "https://hook.eu1.make.com/ms6lzsfx6h6sye8dudjn158n92ou1fg5";
+    const WEBHOOK_URL = "https://hook.eu1.make.com/2oxhoreb38ajxjqxy3lnyrwejbpso7a3";
     try {
       await fetch(WEBHOOK_URL, {
         method: "POST",
