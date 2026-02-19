@@ -140,7 +140,7 @@ function Field({ label, required, children }) {
 function StepType({ data, onChange, onNext }) {
   const types = [
     { key: "angel", icon: "👤", label: "Angel Investor" },
-    { key: "institutional", icon: "🏛", label: "Institutional" },
+    { key: "institutional", icon: "🏦", label: "Institutional" },
     { key: "family_office", icon: "🏠", label: "Family Office" },
   ];
   return (
