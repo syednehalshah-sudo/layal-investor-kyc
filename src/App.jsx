@@ -3,9 +3,9 @@ import { useState } from "react";
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: #0b0c0e; min-height: 100vh; }
+  body { font-family: 'DM Sans', sans-serif; background: #ffffff; min-height: 100vh; }
   .shell {
-    min-height: 100vh; background: #0b0c0e; display: flex; align-items: center;
+    min-height: 100vh; background: #ffffff; display: flex; align-items: center;
     justify-content: center; padding: 2rem; position: relative; overflow: hidden;
   }
   .shell::before {
