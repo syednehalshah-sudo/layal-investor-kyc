@@ -17,7 +17,7 @@ const styles = `
     background: radial-gradient(circle, rgba(120,100,200,0.06) 0%, transparent 70%); pointer-events: none;
   }
   .card {
-    background: #111214; border: 1px solid #222428; border-radius: 2px;
+    background: #ffffff; border: 1px solid #e0e0e0; border-radius: 2px;
     width: 100%; max-width: 680px; padding: 3rem; position: relative; z-index: 1;
   }
   .card-accent { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #b4915a, #d4af7a, #b4915a); }
@@ -43,7 +43,7 @@ const styles = `
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23555860'/%3E%3C/svg%3E");
     background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; cursor: pointer;
   }
-  select option { background: #111214; }
+  select option { background: #ffffff; }
   textarea { resize: vertical; min-height: 80px; }
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.4rem; }
