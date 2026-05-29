@@ -1,104 +1,104 @@
 import { useState } from "react";
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: #ffffff; min-height: 100vh; }
+  body { font-family: 'Manrope', sans-serif; background: #06061a; min-height: 100vh; }
   .shell {
-    min-height: 100vh; background: #ffffff; display: flex; align-items: center;
+    min-height: 100vh; background: #06061a; display: flex; align-items: center;
     justify-content: center; padding: 2rem; position: relative; overflow: hidden;
   }
   .shell::before {
     content: ''; position: fixed; top: -30%; right: -20%; width: 60vw; height: 60vw;
-    background: radial-gradient(circle, rgba(180,145,90,0.08) 0%, transparent 70%); pointer-events: none;
+    background: radial-gradient(circle, rgba(35,35,255,0.08) 0%, transparent 70%); pointer-events: none;
   }
   .shell::after {
     content: ''; position: fixed; bottom: -20%; left: -10%; width: 40vw; height: 40vw;
-    background: radial-gradient(circle, rgba(120,100,200,0.06) 0%, transparent 70%); pointer-events: none;
+    background: radial-gradient(circle, rgba(17,17,133,0.06) 0%, transparent 70%); pointer-events: none;
   }
   .card {
-    background: #ffffff; border: 1px solid #e0e0e0; border-radius: 2px;
+    background: #0d0e24; border: 1px solid #20224a; border-radius: 2px;
     width: 100%; max-width: 680px; padding: 3rem; position: relative; z-index: 1;
   }
-  .card-accent { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #b4915a, #d4af7a, #b4915a); }
-  .logo-mark { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.35em; color: #b4915a; text-transform: uppercase; margin-bottom: 2.5rem; }
-  h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: #e8e0d0; line-height: 1.2; margin-bottom: 0.4rem; }
-  .subtitle { font-size: 0.82rem; color: #555860; font-weight: 300; letter-spacing: 0.02em; margin-bottom: 2.5rem; }
+  .card-accent { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #2323FF, #4E4EFF, #2323FF); }
+  .logo-mark { font-family: 'Manrope', sans-serif; font-size: 0.75rem; font-weight: 300; letter-spacing: 0.35em; color: #2323FF; text-transform: uppercase; margin-bottom: 2.5rem; }
+  h1 { font-family: 'Manrope', sans-serif; font-size: 2.2rem; font-weight: 300; color: #EEF0FF; line-height: 1.2; margin-bottom: 0.4rem; }
+  .subtitle { font-size: 0.82rem; color: #7E82AE; font-weight: 300; letter-spacing: 0.02em; margin-bottom: 2.5rem; }
   .progress-bar { display: flex; gap: 4px; margin-bottom: 2.5rem; }
-  .progress-seg { height: 2px; flex: 1; background: #1e2024; transition: background 0.4s ease; }
-  .progress-seg.active { background: #b4915a; }
-  .progress-seg.done { background: #6a5a3a; }
-  .step-label { font-size: 0.72rem; letter-spacing: 0.12em; color: #444750; text-transform: uppercase; margin-bottom: 1.8rem; }
+  .progress-seg { height: 2px; flex: 1; background: #20224a; transition: background 0.4s ease; }
+  .progress-seg.active { background: #2323FF; }
+  .progress-seg.done { background: #1b1b6e; }
+  .step-label { font-size: 0.72rem; letter-spacing: 0.12em; color: #5A5E86; text-transform: uppercase; margin-bottom: 1.8rem; }
   .field { margin-bottom: 1.4rem; }
-  label { display: block; font-size: 0.75rem; letter-spacing: 0.08em; color: #888b90; text-transform: uppercase; margin-bottom: 0.5rem; }
-  label span.req { color: #b4915a; margin-left: 2px; }
+  label { display: block; font-size: 0.75rem; letter-spacing: 0.08em; color: #9A9DC4; text-transform: uppercase; margin-bottom: 0.5rem; }
+  label span.req { color: #2323FF; margin-left: 2px; }
   input[type="text"], input[type="email"], input[type="number"], input[type="url"], select, textarea {
-    width: 100%; background: #0d0e10; border: 1px solid #1e2024; border-radius: 1px;
-    color: #c8c0b0; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 300;
+    width: 100%; background: #0a0a1e; border: 1px solid #20224a; border-radius: 1px;
+    color: #C9CCEC; font-family: 'Manrope', sans-serif; font-size: 0.9rem; font-weight: 300;
     padding: 0.75rem 1rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
     appearance: none; -webkit-appearance: none;
   }
-  input:focus, select:focus, textarea:focus { border-color: #b4915a; box-shadow: 0 0 0 1px rgba(180,145,90,0.15); }
+  input:focus, select:focus, textarea:focus { border-color: #2323FF; box-shadow: 0 0 0 1px rgba(35,35,255,0.15); }
   select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23555860'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237E82AE'/%3E%3C/svg%3E");
     background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; cursor: pointer;
   }
-  select option { background: #ffffff; }
+  select option { background: #0d0e24; }
   textarea { resize: vertical; min-height: 80px; }
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.4rem; }
   .check-item {
-    display: flex; align-items: center; gap: 0.6rem; background: #0d0e10; border: 1px solid #1e2024;
+    display: flex; align-items: center; gap: 0.6rem; background: #0a0a1e; border: 1px solid #20224a;
     border-radius: 1px; padding: 0.55rem 0.8rem; cursor: pointer; transition: border-color 0.2s;
-    font-size: 0.82rem; color: #888b90; font-weight: 300;
+    font-size: 0.82rem; color: #9A9DC4; font-weight: 300;
   }
-  .check-item:hover { border-color: #333640; }
-  .check-item.selected { border-color: #b4915a; color: #c8b88a; }
+  .check-item:hover { border-color: #2e3160; }
+  .check-item.selected { border-color: #2323FF; color: #BABAFF; }
   .check-item input { display: none; }
   .check-box {
-    width: 14px; height: 14px; border: 1px solid #333640; border-radius: 1px;
+    width: 14px; height: 14px; border: 1px solid #2e3160; border-radius: 1px;
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    font-size: 9px; color: #b4915a; transition: border-color 0.2s, background 0.2s;
+    font-size: 9px; color: #2323FF; transition: border-color 0.2s, background 0.2s;
   }
-  .check-item.selected .check-box { border-color: #b4915a; background: rgba(180,145,90,0.1); }
-  .divider { border: none; border-top: 1px solid #1a1c20; margin: 2rem 0; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; color: #b4915a; letter-spacing: 0.05em; margin-bottom: 1.2rem; }
+  .check-item.selected .check-box { border-color: #2323FF; background: rgba(35,35,255,0.1); }
+  .divider { border: none; border-top: 1px solid #1c1d3a; margin: 2rem 0; }
+  .section-title { font-family: 'Manrope', sans-serif; font-size: 1rem; font-weight: 400; color: #2323FF; letter-spacing: 0.05em; margin-bottom: 1.2rem; }
   .btn-row { display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; }
   .btn-back {
-    background: none; border: 1px solid #1e2024; color: #555860; font-family: 'DM Sans', sans-serif;
+    background: none; border: 1px solid #20224a; color: #7E82AE; font-family: 'Manrope', sans-serif;
     font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.7rem 1.5rem;
     cursor: pointer; border-radius: 1px; transition: border-color 0.2s, color 0.2s;
   }
-  .btn-back:hover { border-color: #333640; color: #888b90; }
+  .btn-back:hover { border-color: #2e3160; color: #9A9DC4; }
   .btn-next {
-    background: #b4915a; border: none; color: #ffffff; font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    background: #2323FF; border: none; color: #ffffff; font-family: 'Manrope', sans-serif;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
     padding: 0.7rem 2rem; cursor: pointer; border-radius: 1px; transition: background 0.2s, transform 0.1s;
   }
-  .btn-next:hover { background: #c8a46a; }
+  .btn-next:hover { background: #4E4EFF; }
   .btn-next:active { transform: scale(0.98); }
-  .btn-next:disabled { background: #2a2c30; color: #555860; cursor: not-allowed; }
+  .btn-next:disabled { background: #20224a; color: #7E82AE; cursor: not-allowed; }
   .success-state { text-align: center; padding: 2rem 0; }
   .success-icon {
-    width: 56px; height: 56px; border: 1px solid #b4915a; border-radius: 50%;
+    width: 56px; height: 56px; border: 1px solid #2323FF; border-radius: 50%;
     display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;
-    font-size: 1.4rem; color: #b4915a;
+    font-size: 1.4rem; color: #2323FF;
   }
-  .success-state h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: #e8e0d0; margin-bottom: 0.6rem; }
-  .success-state p { font-size: 0.85rem; color: #555860; font-weight: 300; line-height: 1.7; }
+  .success-state h2 { font-family: 'Manrope', sans-serif; font-size: 1.8rem; font-weight: 300; color: #EEF0FF; margin-bottom: 0.6rem; }
+  .success-state p { font-size: 0.85rem; color: #7E82AE; font-weight: 300; line-height: 1.7; }
   .type-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1rem; }
   .type-card {
-    background: #0d0e10; border: 1px solid #1e2024; border-radius: 1px; padding: 1.4rem 1rem;
+    background: #0a0a1e; border: 1px solid #20224a; border-radius: 1px; padding: 1.4rem 1rem;
     cursor: pointer; text-align: center; transition: border-color 0.2s, background 0.2s;
   }
-  .type-card:hover { border-color: #333640; }
-  .type-card.selected { border-color: #b4915a; background: rgba(180,145,90,0.04); }
+  .type-card:hover { border-color: #2e3160; }
+  .type-card.selected { border-color: #2323FF; background: rgba(35,35,255,0.04); }
   .type-card-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
-  .type-card-name { font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: #888b90; font-weight: 400; }
-  .type-card.selected .type-card-name { color: #b4915a; }
+  .type-card-name { font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9DC4; font-weight: 400; }
+  .type-card.selected .type-card-name { color: #2323FF; }
   .submitted-badge {
-    display: inline-block; background: rgba(180,145,90,0.1); border: 1px solid #b4915a;
-    color: #b4915a; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    display: inline-block; background: rgba(35,35,255,0.1); border: 1px solid #2323FF;
+    color: #2323FF; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
     padding: 0.3rem 0.8rem; border-radius: 1px; margin-bottom: 1rem;
   }
   @media (max-width: 600px) {
@@ -386,7 +386,7 @@ export default function App() {
   const handleSubmit = async () => {
     setSubmitting(true);
     // TODO: Replace with your Make.com or backend webhook URL
-    const WEBHOOK_URL = "https://hook.eu1.make.com/2oxhoreb38ajxjqxy3lnyrwejbpso7a3";
+    const WEBHOOK_URL = "https://hook.eu1.make.com/ms6lzsfx6h6sye8dudjn158n92ou1fg5";
     try {
       await fetch(WEBHOOK_URL, {
         method: "POST",
